@@ -1,88 +1,175 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#090909">
 <meta name="description" content="CALC PRO GOLD: حاسبة عربية ذهبية متقدمة، علمية ومالية وإحصائية، مع تحويل الوحدات وسجل العمليات.">
 <title>CALC PRO GOLD | الحاسبة الملكية</title>
+
 <style>
 :root{
-  --bg:#090909;--surface:#121212;--surface2:#191919;
-  --gold:#d4af37;--gold2:#ffe49a;--gold3:#9b7620;
-  --text:#fff8e7;--muted:#aaa18a;--line:#40351d;
-  --danger:#ff7474;--shadow:0 20px 65px #000b;
+  --bg:#090909;
+  --surface:#121212;
+  --surface2:#191919;
+  --gold:#d4af37;
+  --gold2:#ffe49a;
+  --gold3:#9b7620;
+  --text:#fff8e7;
+  --muted:#aaa18a;
+  --line:#40351d;
+  --danger:#ff7474;
+  --shadow:0 20px 65px #000b;
 }
 *{box-sizing:border-box}
 html{min-height:100%;background:var(--bg);scroll-behavior:smooth}
 body{
-  margin:0;min-height:100vh;padding:14px;
-  display:flex;justify-content:center;align-items:flex-start;
-  color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
-  background:radial-gradient(ellipse at 50% 0%,#3a2c0c 0,transparent 40%),
-  radial-gradient(ellipse at 100% 100%,#201807 0,transparent 35%),var(--bg)
+  margin:0;min-height:100vh;padding:12px;
+  display:flex;flex-direction:column;align-items:center;
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  background:
+  radial-gradient(ellipse at 50% 0%,#3a2c0c 0,transparent 40%),
+  radial-gradient(ellipse at 100% 100%,#201807 0,transparent 35%),
+  var(--bg);
 }
 button,input,select{font:inherit}
-button{touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent}
+button{
+  touch-action:manipulation;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
 button:focus-visible,input:focus-visible,select:focus-visible{
-  outline:2px solid var(--gold2);outline-offset:2px
+  outline:2px solid var(--gold2);
+  outline-offset:2px;
 }
+
+/* ADVERTISEMENT LAYOUT */
+.ad-slot{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:13px auto;
+  min-height:0;
+  overflow:hidden;
+  text-align:center;
+  position:relative;
+}
+.ad-slot iframe{
+  max-width:100%;
+  border:0;
+}
+.ad-728{min-height:90px}
+.ad-320{min-height:50px}
+.ad-300{min-height:250px}
+.ad-160{min-height:300px}
+.ad-label{
+  position:absolute;
+  top:0;
+  right:0;
+  font-size:8px;
+  color:#766d57;
+  z-index:1;
+  pointer-events:none;
+}
+.ad-content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  overflow:hidden;
+}
+
+/* MAIN APP */
 .app{
-  width:100%;max-width:510px;position:relative;overflow:hidden;
-  padding:19px;border:1px solid #5d491b;border-radius:27px;
+  width:100%;
+  max-width:510px;
+  position:relative;
+  overflow:hidden;
+  padding:19px;
+  border:1px solid #5d491b;
+  border-radius:27px;
   background:linear-gradient(155deg,#171717,#0b0b0b 65%);
-  box-shadow:var(--shadow),inset 0 1px #ffffff0c
+  box-shadow:var(--shadow),inset 0 1px #ffffff0c;
 }
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:18px;
+}
 .brand{display:flex;align-items:center;gap:11px;min-width:0}
 .logo{
-  width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;
-  border-radius:15px;background:linear-gradient(145deg,#ffe9a0,#b88b20 48%,#76520d);
+  width:48px;height:48px;flex-shrink:0;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:linear-gradient(145deg,#ffe9a0,#b88b20 48%,#76520d);
   color:#161006;font-size:25px;font-weight:950;
-  box-shadow:0 0 22px #d4af3720
+  box-shadow:0 0 22px #d4af3720;
 }
 .brand h1{font-size:17px;letter-spacing:.4px;margin:0;color:var(--gold2)}
 .brand p{font-size:10px;letter-spacing:1.1px;color:var(--muted);margin:4px 0 0}
 .icon-btn,.mini{
-  border:1px solid var(--line);background:#1b1a16;color:var(--gold2);
-  cursor:pointer;border-radius:12px
+  border:1px solid var(--line);
+  background:#1b1a16;color:var(--gold2);
+  cursor:pointer;border-radius:12px;
 }
 .icon-btn{width:43px;height:43px;font-size:19px;flex-shrink:0}
-.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:13px}
+.modes{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:6px;margin-bottom:13px;
+}
 .mode{
-  border:1px solid #302919;background:#151515;color:var(--muted);
-  padding:11px 3px;border-radius:12px;font-size:11px;font-weight:750;cursor:pointer
+  border:1px solid #302919;
+  background:#151515;color:var(--muted);
+  padding:11px 3px;border-radius:12px;
+  font-size:11px;font-weight:750;cursor:pointer;
 }
 .mode.active{
   color:#171106;border-color:var(--gold);
   background:linear-gradient(135deg,var(--gold2),var(--gold),#aa7d19);
-  box-shadow:0 4px 17px #d4af3720
+  box-shadow:0 4px 17px #d4af3720;
 }
 .display{
   background:linear-gradient(145deg,#211b0e,#101010 65%);
-  border:1px solid #66501d;border-radius:20px;padding:17px 15px;
-  min-height:132px;display:flex;flex-direction:column;justify-content:flex-end;
-  gap:9px;margin-bottom:12px;overflow:hidden;
-  box-shadow:inset 0 0 30px #0008
+  border:1px solid #66501d;border-radius:20px;
+  padding:17px 15px;min-height:132px;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;gap:9px;
+  margin-bottom:12px;overflow:hidden;
+  box-shadow:inset 0 0 30px #0008;
 }
-.subdisplay{min-height:18px;color:var(--muted);font-size:12px;direction:ltr;text-align:left;overflow-wrap:anywhere}
+.subdisplay{
+  min-height:18px;color:var(--muted);
+  font-size:12px;direction:ltr;text-align:left;
+  overflow-wrap:anywhere;
+}
 .output{
-  font-size:clamp(28px,8vw,41px);font-weight:800;line-height:1.2;
-  color:var(--gold2);letter-spacing:-.8px;direction:ltr;text-align:left;
-  overflow-wrap:anywhere;min-height:43px
+  font-size:clamp(28px,8vw,41px);
+  font-weight:800;line-height:1.2;
+  color:var(--gold2);letter-spacing:-.8px;
+  direction:ltr;text-align:left;
+  overflow-wrap:anywhere;min-height:43px;
 }
 .display-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .mini{padding:6px 10px;font-size:10px;font-weight:750}
 .status{margin-right:auto;color:var(--muted);font-size:10px}
 .memory,.keypad,.scientific{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:11px
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;margin-bottom:11px;
 }
 .memory{grid-template-columns:repeat(5,minmax(0,1fr))}
 .key{
-  min-width:0;height:54px;border:1px solid #302d25;border-radius:14px;
+  min-width:0;height:54px;
+  border:1px solid #302d25;border-radius:14px;
   background:linear-gradient(150deg,#252525,#171717);
-  color:var(--text);font-size:19px;font-weight:650;cursor:pointer;
-  box-shadow:0 3px 0 #050505;transition:transform .08s,border-color .12s
+  color:var(--text);font-size:19px;font-weight:650;
+  cursor:pointer;box-shadow:0 3px 0 #050505;
+  transition:transform .08s,border-color .12s;
 }
 .key:active{transform:scale(.96);box-shadow:none}
 .key.fn{background:#211d13;color:var(--gold2);border-color:#48391b;font-size:13px}
@@ -91,15 +178,19 @@ button:focus-visible,input:focus-visible,select:focus-visible{
 .key.equal{
   background:linear-gradient(135deg,#ffe8a0,#d4af37 55%,#9d7418);
   color:#161006;border:0;font-size:25px;font-weight:900;
-  box-shadow:0 5px 18px #d4af3730
+  box-shadow:0 5px 18px #d4af3730;
 }
 .key.zero{grid-column:span 2}
 .scientific{display:none;grid-template-columns:repeat(5,minmax(0,1fr))}
 .scientific.show{display:grid}
-.scientific .key{height:43px;font-size:12px;color:var(--gold2);background:#201b11;border-color:#42351b}
+.scientific .key{
+  height:43px;font-size:12px;color:var(--gold2);
+  background:#201b11;border-color:#42351b;
+}
 .panel{
-  display:none;background:#131313;border:1px solid var(--line);
-  border-radius:17px;padding:14px;margin-bottom:12px
+  display:none;background:#131313;
+  border:1px solid var(--line);
+  border-radius:17px;padding:14px;margin-bottom:12px;
 }
 .panel.show{display:block}
 .panel h3{margin:0 0 12px;font-size:14px;color:var(--gold2)}
@@ -108,66 +199,108 @@ button:focus-visible,input:focus-visible,select:focus-visible{
 .field{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:11px;min-width:0}
 .field input,.field select{
   width:100%;min-width:0;background:#1b1b1b;color:var(--text);
-  border:1px solid #40351d;border-radius:10px;padding:11px 9px;outline:none
+  border:1px solid #40351d;border-radius:10px;
+  padding:11px 9px;outline:none;
 }
 .field select{color:var(--gold2)}
 .result{
   margin-top:12px;padding:12px;border-radius:12px;
-  border:1px solid #4c3b19;background:#201a0e;color:var(--gold2);
-  font-size:13px;font-weight:750;line-height:1.9;overflow-wrap:anywhere
+  border:1px solid #4c3b19;background:#201a0e;
+  color:var(--gold2);font-size:13px;
+  font-weight:750;line-height:1.9;overflow-wrap:anywhere;
 }
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
 .action-btn{
-  flex:1;min-width:90px;padding:11px 8px;border:1px solid #4b3a19;
-  border-radius:11px;background:#211b10;color:var(--gold2);
-  font-size:12px;font-weight:750;cursor:pointer
+  flex:1;min-width:90px;padding:11px 8px;
+  border:1px solid #4b3a19;border-radius:11px;
+  background:#211b10;color:var(--gold2);
+  font-size:12px;font-weight:750;cursor:pointer;
 }
-.bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:12px}
+.bottom{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;margin-top:12px;
+}
 .bottom button{
-  border:1px solid #39301d;background:#171717;color:var(--muted);
-  padding:11px 4px;border-radius:11px;font-size:11px;font-weight:750;cursor:pointer
+  border:1px solid #39301d;background:#171717;
+  color:var(--muted);padding:11px 4px;
+  border-radius:11px;font-size:11px;font-weight:750;cursor:pointer;
 }
 .bottom button:active{color:var(--gold2);background:#282012}
-.footer{text-align:center;color:#77705e;font-size:10px;margin-top:16px;line-height:1.8}
+.footer{
+  text-align:center;color:#77705e;font-size:10px;
+  margin-top:16px;line-height:1.8;
+}
 .overlay{
-  position:absolute;inset:0;background:#101010;z-index:5;display:none;
-  flex-direction:column;padding:19px;border-radius:27px
+  position:absolute;inset:0;background:#101010;
+  z-index:5;display:none;flex-direction:column;
+  padding:19px;border-radius:27px;
 }
 .overlay.show{display:flex}
-.overlay-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.overlay-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);
+}
 .overlay-head h2{font-size:16px;color:var(--gold2);margin:0}
 .history-list{overflow:auto;display:flex;flex-direction:column;gap:9px;padding-top:12px}
 .history-item{
-  border:1px solid #40351d;background:#191919;border-radius:12px;
-  padding:12px;text-align:left;direction:ltr;color:var(--text);cursor:pointer
+  border:1px solid #40351d;background:#191919;
+  border-radius:12px;padding:12px;text-align:left;
+  direction:ltr;color:var(--text);cursor:pointer;
 }
 .history-item .he{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
 .history-item .hr{font-size:18px;color:var(--gold2);font-weight:800;margin-top:5px}
 .empty{text-align:center;padding:35px 8px;color:var(--muted);font-size:13px}
 .toast{
-  position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);
-  background:#211b10;border:1px solid var(--gold3);color:var(--gold2);
-  padding:12px 16px;border-radius:12px;font-size:12px;opacity:0;
-  pointer-events:none;transition:.2s;z-index:20;max-width:92vw;text-align:center
+  position:fixed;bottom:18px;left:50%;
+  transform:translate(-50%,20px);
+  background:#211b10;border:1px solid var(--gold3);
+  color:var(--gold2);padding:12px 16px;
+  border-radius:12px;font-size:12px;opacity:0;
+  pointer-events:none;transition:.2s;z-index:20;
+  max-width:92vw;text-align:center;
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:380px){
-  body{padding:7px}.app{padding:12px;border-radius:22px}
-  .key{height:49px;border-radius:12px}.memory{gap:5px}
-  .memory .key{font-size:11px}.tool-grid{gap:8px}
+  body{padding:7px}
+  .app{padding:12px;border-radius:22px}
+  .key{height:49px;border-radius:12px}
+  .memory{gap:5px}
+  .memory .key{font-size:11px}
+  .tool-grid{gap:8px}
   .brand h1{font-size:15px}
+  .ad-728{min-height:0}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
+
 <body>
+
+<!-- ADSTERRA: EXTRA SCRIPT -->
+<script data-cfasync="false"
+src="https://abscloud.org/1/8e1d69a31e92d995baa93cd2281350c6"></script>
+
+<!-- ADSTERRA: TOP BANNER -->
+<div class="ad-slot ad-728">
+  <span class="ad-label">إعلان</span>
+  <div class="ad-content" id="ad728"></div>
+</div>
+
+<script async data-cfasync="false"
+src="https://bauval.org/21/ceb3d31be191868eb07776927bcdf1f1"></script>
+<div id="container-ceb3d31be191868eb07776927bcdf1f1"></div>
+
 <main class="app" aria-label="الحاسبة الملكية">
+
 <header class="top">
   <div class="brand">
     <div class="logo" aria-hidden="true">♛</div>
-    <div><h1>CALC PRO GOLD</h1><p>الحاسبة الذكية الملكية</p></div>
+    <div>
+      <h1>CALC PRO GOLD</h1>
+      <p>الحاسبة الذكية الملكية</p>
+    </div>
   </div>
-  <button class="icon-btn" id="historyOpen" aria-label="سجل العمليات" title="السجل">◷</button>
+  <button class="icon-btn" id="historyOpen" aria-label="سجل العمليات">◷</button>
 </header>
 
 <nav class="modes" aria-label="أوضاع الحاسبة">
@@ -208,10 +341,14 @@ button:focus-visible,input:focus-visible,select:focus-visible{
       <label class="field">القيمة<input id="cv" type="number" value="1" step="any"></label>
       <label class="field">الفئة
         <select id="ct">
-          <option value="length">الطول</option><option value="weight">الوزن</option>
-          <option value="area">المساحة</option><option value="volume">الحجم</option>
-          <option value="speed">السرعة</option><option value="time">الزمن</option>
-          <option value="temperature">الحرارة</option><option value="data">البيانات الرقمية</option>
+          <option value="length">الطول</option>
+          <option value="weight">الوزن</option>
+          <option value="area">المساحة</option>
+          <option value="volume">الحجم</option>
+          <option value="speed">السرعة</option>
+          <option value="time">الزمن</option>
+          <option value="temperature">الحرارة</option>
+          <option value="data">البيانات الرقمية</option>
         </select>
       </label>
       <label class="field">من<select id="cf"></select></label>
@@ -235,7 +372,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{
       <label class="field">السعر الأصلي<input id="fp" type="number" value="100" step="any"></label>
       <label class="field">الخصم %<input id="fd" type="number" value="10" step="any"></label>
       <label class="field">الضريبة %<input id="ft" type="number" value="0" step="any"></label>
-      <label class="field">التكلفة (اختياري)<input id="fc" type="number" value="0" step="any"></label>
+      <label class="field">التكلفة<input id="fc" type="number" value="0" step="any"></label>
     </div>
     <div class="result" id="fres"></div>
   </div>
@@ -252,20 +389,20 @@ button:focus-visible,input:focus-visible,select:focus-visible{
 
   <div class="panel" id="statsBox">
     <h3>التحليل الإحصائي</h3>
-    <label class="field">أدخل الأرقام مفصولة بفواصل
-      <input id="sv" value="10, 20, 20, 30, 40" placeholder="10, 20, 30, 40">
+    <label class="field">الأرقام مفصولة بفواصل
+      <input id="sv" value="10, 20, 20, 30, 40">
     </label>
-    <p class="panel-note">يعرض المتوسط والوسيط والمنوال والتباين والانحراف المعياري للمجتمع.</p>
+    <p class="panel-note">المتوسط والوسيط والمنوال والتباين والانحراف المعياري.</p>
     <div class="result" id="sres2"></div>
   </div>
 
   <div class="panel" id="quadraticBox">
     <h3>حل المعادلة التربيعية</h3>
-    <p class="panel-note">صيغة المعادلة: ax² + bx + c = 0</p>
+    <p class="panel-note">ax² + bx + c = 0</p>
     <div class="tool-grid">
-      <label class="field">المعامل a<input id="qa" type="number" value="1" step="any"></label>
-      <label class="field">المعامل b<input id="qb" type="number" value="-5" step="any"></label>
-      <label class="field">المعامل c<input id="qc" type="number" value="6" step="any"></label>
+      <label class="field">a<input id="qa" type="number" value="1" step="any"></label>
+      <label class="field">b<input id="qb" type="number" value="-5" step="any"></label>
+      <label class="field">c<input id="qc" type="number" value="6" step="any"></label>
     </div>
     <div class="result" id="qres"></div>
   </div>
@@ -277,6 +414,12 @@ button:focus-visible,input:focus-visible,select:focus-visible{
       <label class="field">التاريخ الثاني<input id="d2" type="date"></label>
     </div>
     <div class="result" id="dres"></div>
+  </div>
+
+  <!-- ADSTERRA 300x250 -->
+  <div class="ad-slot ad-300">
+    <span class="ad-label">إعلان</span>
+    <div class="ad-content" id="ad300"></div>
   </div>
 </section>
 
@@ -337,16 +480,35 @@ button:focus-visible,input:focus-visible,select:focus-visible{
   <button id="historyClear">مسح السجل</button>
   <button id="resetAll">إعادة ضبط</button>
 </div>
-<div class="footer">CALC PRO GOLD · PRECISION MEETS LUXURY<br>أداة حسابية تعمل محليًا داخل المتصفح</div>
+
+<div class="footer">
+  CALC PRO GOLD · PRECISION MEETS LUXURY<br>
+  أداة حسابية تعمل محليًا داخل المتصفح
+</div>
 
 <section class="overlay" id="historyOverlay" aria-label="سجل العمليات">
   <div class="overlay-head">
     <h2>سجل العمليات</h2>
-    <button class="icon-btn" id="historyClose" aria-label="إغلاق">×</button>
+    <button class="icon-btn" id="historyClose">×</button>
   </div>
-  <div class="history-list" id="historyList"><div class="empty">لا توجد عمليات بعد</div></div>
+  <div class="history-list" id="historyList">
+    <div class="empty">لا توجد عمليات بعد</div>
+  </div>
 </section>
 </main>
+
+<!-- ADSTERRA 320x50 -->
+<div class="ad-slot ad-320">
+  <span class="ad-label">إعلان</span>
+  <div class="ad-content" id="ad320"></div>
+</div>
+
+<!-- ADSTERRA 160x300 -->
+<div class="ad-slot ad-160">
+  <span class="ad-label">إعلان</span>
+  <div class="ad-content" id="ad160"></div>
+</div>
+
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -363,7 +525,9 @@ const fmt=n=>{
  return Number(n.toPrecision(12)).toLocaleString('en-US',{useGrouping:false,maximumSignificantDigits:12});
 };
 function notify(s){
- toast.textContent=s;toast.classList.add('show');clearTimeout(toastTimer);
+ toast.textContent=s;
+ toast.classList.add('show');
+ clearTimeout(toastTimer);
  toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
 }
 function update(){
@@ -371,9 +535,12 @@ function update(){
  $('memoryStatus').textContent='الذاكرة: '+fmt(memory);
 }
 function insert(v){
- if(justCalculated&&/^(?:\d|\.|\(|π|e|Ans)$/.test(v)){expression='';sub.textContent='';}
+ if(justCalculated&&/^(?:\d|\.|\(|π|e|Ans)$/.test(v)){
+  expression='';sub.textContent='';
+ }
  justCalculated=false;
- expression+=v==='Ans'?String(lastAnswer):v;update();
+ expression+=v==='Ans'?String(lastAnswer):v;
+ update();
 }
 function clear(){expression='';sub.textContent='';justCalculated=false;update();}
 function back(){expression=expression.slice(0,-1);justCalculated=false;update();}
@@ -384,7 +551,9 @@ function sign(){
 }
 function factorial(n){
  if(!Number.isInteger(n)||n<0||n>170)throw Error('العاملية تقبل أعدادًا صحيحة من 0 إلى 170');
- let r=1;for(let i=2;i<=n;i++)r*=i;return r;
+ let r=1;
+ for(let i=2;i<=n;i++)r*=i;
+ return r;
 }
 function tokenize(s){
  s=s.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/π/g,'pi').replace(/\bAns\b/gi,'ans');
@@ -412,17 +581,24 @@ function evaluate(source){
  const t=tokenize(source);let p=0;
  const peek=()=>t[p],take=()=>t[p++];
  function primary(){
-  const x=take();if(!x)throw Error('أكمل العملية الحسابية');
+  const x=take();
+  if(!x)throw Error('أكمل العملية الحسابية');
   if(x.type==='num')return x.value;
   if(x.type==='+')return unary();
   if(x.type==='-')return -unary();
   if(x.type==='('){
-   const v=add();if(!peek()||take().type!==')')throw Error('يوجد قوس غير مغلق');return v;
+   const v=add();
+   if(!peek()||take().type!==')')throw Error('يوجد قوس غير مغلق');
+   return v;
   }
   if(x.type==='id'){
-   if(x.value==='pi')return Math.PI;if(x.value==='e')return Math.E;if(x.value==='ans')return lastAnswer;
+   if(x.value==='pi')return Math.PI;
+   if(x.value==='e')return Math.E;
+   if(x.value==='ans')return lastAnswer;
    if(!peek()||peek().type!=='(')throw Error('الدالة '+x.value+' تحتاج إلى أقواس');
-   take();const v=add();if(!peek()||take().type!==')')throw Error('يوجد قوس غير مغلق');
+   take();
+   const v=add();
+   if(!peek()||take().type!==')')throw Error('يوجد قوس غير مغلق');
    switch(x.value){
     case 'sin':return Math.sin(degrees?v*Math.PI/180:v);
     case 'cos':return Math.cos(degrees?v*Math.PI/180:v);
@@ -442,11 +618,16 @@ function evaluate(source){
  function postfix(){
   let v=primary();
   while(peek()&&(peek().type==='!'||peek().type==='%')){
-   const op=take().type;v=op==='!'?factorial(v):v/100;
+   const op=take().type;
+   v=op==='!'?factorial(v):v/100;
   }
   return v;
  }
- function power(){let v=postfix();if(peek()?.type==='^'){take();v=Math.pow(v,unary());}return v;}
+ function power(){
+  let v=postfix();
+  if(peek()?.type==='^'){take();v=Math.pow(v,unary());}
+  return v;
+ }
  function unary(){
   if(peek()?.type==='+'){take();return unary();}
   if(peek()?.type==='-'){take();return -unary();}
@@ -464,12 +645,14 @@ function evaluate(source){
  function add(){
   let v=mul();
   while(peek()&&(peek().type==='+'||peek().type==='-')){
-   const op=take().type,b=mul();v=op==='+'?v+b:v-b;
+   const op=take().type,b=mul();
+   v=op==='+'?v+b:v-b;
   }
   return v;
  }
  if(!t.length)throw Error('أدخل عملية أولاً');
- const result=add();if(p<t.length)throw Error('تحقق من ترتيب الأرقام والعمليات');
+ const result=add();
+ if(p<t.length)throw Error('تحقق من ترتيب الأرقام والعمليات');
  if(!Number.isFinite(result))throw Error('النتيجة خارج النطاق الحسابي');
  return Math.abs(result)<1e-12?0:Number(result.toPrecision(12));
 }
@@ -477,14 +660,25 @@ function persist(){
  try{localStorage.setItem('calcpro-gold-history',JSON.stringify(records));}catch(_){}
 }
 function renderHistory(){
- const list=$('historyList');list.replaceChildren();
- if(!records.length){const e=document.createElement('div');e.className='empty';e.textContent='لا توجد عمليات بعد';list.append(e);return;}
+ const list=$('historyList');
+ list.replaceChildren();
+ if(!records.length){
+  const e=document.createElement('div');
+  e.className='empty';e.textContent='لا توجد عمليات بعد';list.append(e);return;
+ }
  records.forEach(r=>{
-  const b=document.createElement('button');b.type='button';b.className='history-item';
-  const e=document.createElement('div');e.className='he';e.textContent=r.expr;
-  const v=document.createElement('div');v.className='hr';v.textContent='= '+fmt(r.result);
+  const b=document.createElement('button');
+  b.type='button';b.className='history-item';
+  const e=document.createElement('div');
+  e.className='he';e.textContent=r.expr;
+  const v=document.createElement('div');
+  v.className='hr';v.textContent='= '+fmt(r.result);
   b.append(e,v);
-  b.addEventListener('click',()=>{expression=String(r.result);lastAnswer=r.result;justCalculated=true;update();$('historyOverlay').classList.remove('show');});
+  b.addEventListener('click',()=>{
+   expression=String(r.result);
+   lastAnswer=r.result;justCalculated=true;
+   update();$('historyOverlay').classList.remove('show');
+  });
   list.append(b);
  });
 }
@@ -496,8 +690,11 @@ function calculate(){
  if(!expression.trim())return;
  try{
   const before=expression,result=evaluate(before);
-  lastAnswer=result;records.unshift({expr:before,result});records=records.slice(0,100);
-  sub.textContent=before+' =';expression=fmt(result);justCalculated=true;
+  lastAnswer=result;
+  records.unshift({expr:before,result});
+  records=records.slice(0,100);
+  sub.textContent=before+' =';
+  expression=fmt(result);justCalculated=true;
   update();renderHistory();persist();notify('تم الحساب بنجاح');
  }catch(e){notify(e.message||'تعذر الحساب');}
 }
@@ -517,14 +714,17 @@ function mem(a){
  if(a==='MC'){memory=0;notify('تم مسح الذاكرة');}
  if(a==='MR'){insert(String(memory));notify('تم استرجاع الذاكرة');}
  if(a==='MS'){memory=current;notify('تم حفظ القيمة');}
- if(a==='M+') {memory+=current;notify('تمت إضافة القيمة للذاكرة');}
+ if(a==='M+'){memory+=current;notify('تمت إضافة القيمة للذاكرة');}
  if(a==='M-'){memory-=current;notify('تم طرح القيمة من الذاكرة');}
  update();
 }
 document.querySelectorAll('[data-value]').forEach(b=>b.addEventListener('click',()=>insert(b.dataset.value)));
 document.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>{
  const a=b.dataset.action;
- if(a==='clear')clear();else if(a==='back')back();else if(a==='sign')sign();else if(a==='equals')calculate();
+ if(a==='clear')clear();
+ else if(a==='back')back();
+ else if(a==='sign')sign();
+ else if(a==='equals')calculate();
 }));
 document.querySelectorAll('[data-mem]').forEach(b=>b.addEventListener('click',()=>mem(b.dataset.mem)));
 document.querySelectorAll('[data-fn]').forEach(b=>b.addEventListener('click',()=>sci(b.dataset.fn)));
@@ -536,12 +736,17 @@ function showMode(mode){
 }
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>showMode(b.dataset.mode)));
 $('angleMode').addEventListener('click',()=>{
- degrees=!degrees;$('angleMode').textContent=degrees?'DEG':'RAD';
+ degrees=!degrees;
+ $('angleMode').textContent=degrees?'DEG':'RAD';
  notify(degrees?'الزوايا بالدرجات':'الزوايا بالراديان');
 });
-$('historyOpen').addEventListener('click',()=>{$('historyOverlay').classList.add('show');renderHistory();});
+$('historyOpen').addEventListener('click',()=>{
+ $('historyOverlay').classList.add('show');renderHistory();
+});
 $('historyClose').addEventListener('click',()=>$('historyOverlay').classList.remove('show'));
-$('historyClear').addEventListener('click',()=>{records=[];persist();renderHistory();notify('تم مسح سجل العمليات');});
+$('historyClear').addEventListener('click',()=>{
+ records=[];persist();renderHistory();notify('تم مسح سجل العمليات');
+});
 $('resetAll').addEventListener('click',()=>{
  clear();memory=0;lastAnswer=0;update();notify('تمت إعادة ضبط الحاسبة');
 });
@@ -551,10 +756,13 @@ $('percentToggle').addEventListener('click',()=>{
 $('copyResult').addEventListener('click',async()=>{
  const value=expression||String(lastAnswer);
  try{
-  if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);notify('تم نسخ النتيجة');}
-  else{
-   const ta=document.createElement('textarea');ta.value=value;ta.style.position='fixed';ta.style.opacity='0';
-   document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();
+  if(navigator.clipboard&&window.isSecureContext){
+   await navigator.clipboard.writeText(value);notify('تم نسخ النتيجة');
+  }else{
+   const ta=document.createElement('textarea');
+   ta.value=value;ta.style.position='fixed';ta.style.opacity='0';
+   document.body.append(ta);ta.select();
+   const ok=document.execCommand('copy');ta.remove();
    notify(ok?'تم نسخ النتيجة':'تعذر النسخ؛ حدد النتيجة وانسخها يدويًا');
   }
  }catch(_){notify('تعذر النسخ في هذا المتصفح');}
@@ -568,7 +776,6 @@ document.addEventListener('keydown',e=>{
  else if(e.key==='Escape'){clear();$('historyOverlay').classList.remove('show');}
 });
 
-/* أدوات النسب والمال والفواتير */
 function n(id){return Number($(id).value);}
 function updatePercent(){
  const a=n('pb'),b=n('pr');
@@ -579,7 +786,8 @@ function updatePercent(){
 function updateFinance(){
  const p=n('fp'),d=n('fd'),t=n('ft'),c=n('fc');
  if(![p,d,t,c].every(Number.isFinite)||p<0||d<0||d>100||t<0||c<0){
-  $('fres').textContent='تحقق من القيم؛ الخصم يجب أن يكون بين 0 و100%.';return;
+  $('fres').textContent='تحقق من القيم؛ الخصم يجب أن يكون بين 0 و100%.';
+  return;
  }
  const discount=p*d/100,net=p-discount,tax=net*t/100,total=net+tax,profit=total-c;
  $('fres').textContent=`قيمة الخصم: ${fmt(discount)} | بعد الخصم: ${fmt(net)} | الضريبة: ${fmt(tax)} | الإجمالي: ${fmt(total)} | الفرق عن التكلفة: ${fmt(profit)}`;
@@ -587,14 +795,18 @@ function updateFinance(){
 function updateSplit(){
  const bill=n('sb'),count=n('sn'),tip=n('st');
  if(![bill,count,tip].every(Number.isFinite)||bill<0||count<1||!Number.isInteger(count)||tip<0){
-  $('sres').textContent='أدخل فاتورة غير سالبة وعدد أشخاص صحيحًا.';return;
+  $('sres').textContent='أدخل فاتورة غير سالبة وعدد أشخاص صحيحًا.';
+  return;
  }
  const gratuity=bill*tip/100,total=bill+gratuity;
  $('sres').textContent=`الإكرامية: ${fmt(gratuity)} | الإجمالي: ${fmt(total)} | نصيب الشخص: ${fmt(total/count)}`;
 }
 function updateStats(){
  const a=$('sv').value.split(/[,،;\s]+/).filter(Boolean).map(Number);
- if(!a.length||a.some(x=>!Number.isFinite(x))){$('sres2').textContent='أدخل أرقامًا صحيحة مفصولة بفواصل.';return;}
+ if(!a.length||a.some(x=>!Number.isFinite(x))){
+  $('sres2').textContent='أدخل أرقامًا صحيحة مفصولة بفواصل.';
+  return;
+ }
  a.sort((x,y)=>x-y);
  const sum=a.reduce((s,x)=>s+x,0),mean=sum/a.length,mid=Math.floor(a.length/2);
  const median=a.length%2?a[mid]:(a[mid-1]+a[mid])/2;
@@ -626,6 +838,7 @@ function updateDate(){
  const days=Math.round(Math.abs(y-x)/86400000);
  $('dres').textContent=`الفارق: ${days} يومًا | ما يعادل ${Math.floor(days/7)} أسبوعًا و${days%7} يوم`;
 }
+
 ['pb','pr'].forEach(id=>$(id).addEventListener('input',updatePercent));
 ['fp','fd','ft','fc'].forEach(id=>$(id).addEventListener('input',updateFinance));
 ['sb','sn','st'].forEach(id=>$(id).addEventListener('input',updateSplit));
@@ -636,7 +849,7 @@ $('sv').addEventListener('input',updateStats);
 const unitData={
  length:{m:1,km:1000,cm:.01,mm:.001,mi:1609.344,ft:.3048,in:.0254,yd:.9144},
  weight:{kg:1,g:.001,mg:.000001,lb:.45359237,oz:.028349523125,t:1000},
- area:{'m²':1,'km²':1e6,'cm²':.0001,'ft²':.09290304,'ha':10000,'acre':4046.8564224},
+ area:{'m²':1,'km²':1e6,'cm²':.0001,'ft²':.09290304,ha:10000,acre:4046.8564224},
  volume:{L:1,mL:.001,m3:1000,gal:3.785411784,cup:.2365882365},
  speed:{'m/s':1,'km/h':1/3.6,mph:.44704,knot:.514444},
  time:{s:1,min:60,h:3600,day:86400},
@@ -658,7 +871,8 @@ function fillUnits(){
  from.replaceChildren();to.replaceChildren();
  Object.entries(unitNames[type]).forEach(([key,label],i)=>{
   for(const sel of [from,to]){
-   const op=document.createElement('option');op.value=key;op.textContent=label;sel.append(op);
+   const op=document.createElement('option');
+   op.value=key;op.textContent=label;sel.append(op);
   }
   if(i===0)from.value=key;
   if(i===1)to.value=key;
@@ -691,9 +905,49 @@ function showTool(type){
 }
 $('toolType').addEventListener('change',()=>showTool($('toolType').value));
 
-fillUnits();updatePercent();updateFinance();updateSplit();updateStats();updateQuadratic();updateDate();
-showTool('convert');update();renderHistory();
+fillUnits();
+updatePercent();updateFinance();updateSplit();updateStats();
+updateQuadratic();updateDate();
+showTool('convert');
+update();renderHistory();
 })();
+
+/* INDEPENDENT ADSTERra CONFIGURATIONS */
+function loadAd(containerId,key,width,height){
+ const container=document.getElementById(containerId);
+ if(!container)return;
+
+ const frame=document.createElement('div');
+ frame.style.width=width+'px';
+ frame.style.maxWidth='100%';
+ frame.style.minHeight=height+'px';
+ frame.style.margin='auto';
+ container.appendChild(frame);
+
+ const config={
+  key:key,
+  format:'iframe',
+  height:height,
+  width:width,
+  params:{}
+ };
+
+ const script=document.createElement('script');
+ script.type='text/javascript';
+ script.text= 'var atOptions = '+JSON.stringify(config)+';';
+ frame.appendChild(script);
+
+ const loader=document.createElement('script');
+ loader.src='https://bauval.org/22/'+key;
+ loader.async=true;
+ frame.appendChild(loader);
+}
+
+loadAd('ad320','f6c9cf142bd40ed437283e04fb4e13c1',320,50);
+loadAd('ad300','53d0748c592339cbfac79bdc76074ada',300,250);
+loadAd('ad728','c4f4e3a6dcea2cb265d2edf5f054de2f',728,90);
+loadAd('ad160','226357130d6d251140ebe7dae98da63f',160,300);
 </script>
+
 </body>
 </html>
